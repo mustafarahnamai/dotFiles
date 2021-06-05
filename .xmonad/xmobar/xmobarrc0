@@ -8,7 +8,7 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=10:antialias=true:hinting=t
                            , "xft:FontAwesome:pixelsize=13"
                            ]
        , bgColor = "#282c34"
-       , fgColor = "#ff6c6b"
+       , fgColor = "#C5C6D0"
        , position = Static { xpos = 0 , ypos = 0, width = 1366, height = 24 }
        , lowerOnStart = True
        , hideOnStart = False
@@ -24,27 +24,14 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=10:antialias=true:hinting=t
                      
 
                       -- Cpu usage in percent
-                    , Run Cpu ["-t", "<fn=1></fn> cpu: (<total>%)","-H","50","--high","red"] 20
+                    , Run Cpu ["-t", "<fn=1></fn> cpu: (<total>%)"] 20
                     
 
                       -- Ram used number and percent
                     , Run Memory ["-t", "<fn=1></fn> mem: <used>M (<usedratio>%)"] 20
                      
 
-                       -- Disk space free
-                    , Run DiskU [("/", "<fn=1></fn> hdd: <free> free")] [] 60
-                     
-
- -- Runs custom script to check for pacman updates.
-                     
-
-                     -- Runs a standard shell command 'uname -r' to get kernel version
-                    , Run Com "uname" ["-r"] "" 3600
-                     
                     -- Prints out the left side items such as workspaces, layout, etc.
-                   
-
-                    -- The workspaces are 'clickable' in my configs.
                     , Run UnsafeStdinReader
                      -- keyboard layout indicator
                     , Run Kbd            [
@@ -54,5 +41,5 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=10:antialias=true:hinting=t
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <action=`xdotool key control+alt+g`> </action><fc=#666666></fc> %UnsafeStdinReader% }{ <fc=#666666> <fn=2>|</fn></fc> <fc=#ecbe7b> %cpu% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#ff6c6b> %memory% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#98be65> %dynnetwork% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#46d9ff> %date%  </fc><fc=#666666> <fn=2>||</fn></fc> %kbd%"
+       , template = " <action=`xdotool key control+alt+g`> </action><fc=#666666></fc> %UnsafeStdinReader% }{ <fc=#666666> <fn=2>|</fn></fc> <fc=#C5C6D0> %cpu% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#C5C6D0> %memory% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#C5C6D0> %dynnetwork% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#C5C6D0> %date%  </fc><fc=#666666> <fn=2>||</fn></fc> %kbd%"
        }

@@ -100,10 +100,10 @@ myBorderWidth :: Dimension
 myBorderWidth = 2          -- Sets border width for windows
 
 myNormColor :: String
-myNormColor   = "#2b033f"  -- Border color of normal windows
+myNormColor   = "#857a7c"  -- Border color of normal windows
 
 myFocusColor :: String
-myFocusColor  = "#af67d3"  -- Border color of focused windows
+myFocusColor  = "#cecacb"  -- Border color of focused windows
 
 altMask :: KeyMask
 altMask = mod1Mask         -- Setting this for use in xprompts
@@ -116,6 +116,7 @@ myStartupHook = do
           spawnOnce "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &"
           spawnOnce "nitrogen --restore &"
           spawnOnce "picom &"
+          spawnOnce "redshift &"
           spawn $ "setxkbmap -layout gb,ir &"
           spawn $ "setxkbmap -option 'grp:alt_shift_toggle'&"
 
@@ -307,10 +308,10 @@ main = do
         , focusedBorderColor = myFocusColor
         , logHook = workspaceHistoryHook <+> myLogHook <+> dynamicLogWithPP xmobarPP
                         { ppOutput = \x -> hPutStrLn xmproc x
-                        , ppCurrent = xmobarColor "#98be65" "" . wrap "[" "]" -- Current workspace in xmobar
-                        , ppVisible = xmobarColor "#98be65" ""                -- Visible but not current workspace
-                        , ppHidden = xmobarColor "#82AAFF" "" . wrap "*" ""   -- Hidden workspaces in xmobar
-                        , ppHiddenNoWindows = xmobarColor "#c792ea" ""        -- Hidden workspaces (no windows)
+                        , ppCurrent = xmobarColor "#C5C6D0" "" . wrap "[" "]" -- Current workspace in xmobar
+                        , ppVisible = xmobarColor "#C5C6D0" ""                -- Visible but not current workspace
+                        , ppHidden = xmobarColor "#C5C6D0" "" . wrap "*" ""   -- Hidden workspaces in xmobar
+                        , ppHiddenNoWindows = xmobarColor "#C5C6D0" ""        -- Hidden workspaces (no windows)
                         , ppTitle = xmobarColor "#b3afc2" "" . shorten 60     -- Title of active window in xmobar
                         , ppSep =  "<fc=#666666> <fn=2>|</fn> </fc>"          -- Separators in xmobar
                         , ppUrgent = xmobarColor "#C45500" "" . wrap "!" "!"  -- Urgent workspace
