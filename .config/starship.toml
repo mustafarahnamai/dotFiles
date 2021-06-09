@@ -5,15 +5,11 @@ add_newline = false
 [line_break]
 disabled = true
 
-# Replace the "❯" symbol in the prompt with "➜"
-# [character]                         # The name of the module we are configuring is "character"
-# success_symbol = "[➜](bold green)"  # The "success_symbol" is set to "➜" with color "bold green"
+[character]                         # The name of the module we are configuring is "character"
+success_symbol = "[❯](#C5C6D0)"     # The "success_symbol" is set to "❯" with color "#C5C6D0"
 
-# Use custom format
-# format = """
-# [┌───────────────────>](bold green)
-# [│](bold green)$directory$rust$package
-# [└─>](bold green) """
+[directory]
+style = " grey"
 
 # Disable the package module, hiding it from the prompt completely
 [package]
