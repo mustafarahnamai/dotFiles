@@ -114,8 +114,8 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 myStartupHook :: X ()
 myStartupHook = do
           spawnOnce "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &"
-          spawnOnce "nitrogen --restore &"
-          spawnOnce "picom &"
+          --spawnOnce "nitrogen --restore &"
+          spawnOnce "feh --bg-fill --randomize /home/rhnm/wallpapers &"
           spawnOnce "redshift &"
           spawn $ "setxkbmap -layout gb,ir &"
           spawn $ "setxkbmap -option 'grp:alt_shift_toggle'&"
@@ -152,15 +152,6 @@ myTabTheme = def { fontName            = myFont
                  , activeTextColor     = "#282c34"
                  , inactiveTextColor   = "#d0d0d0"
                  }
-
--- Theme for showWName which prints current workspace when you change workspaces.
-myShowWNameTheme :: SWNConfig
-myShowWNameTheme = def
-    { swn_font              = "xft:Ubuntu:bold:size=60"
-    , swn_fade              = 1.0
-    , swn_bgcolor           = "#1c1f24"
-    , swn_color             = "#ffffff"
-    }
 
 -- The layout hook
 myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts floats
@@ -205,8 +196,8 @@ myKeys home =
         , ("M-S-q", io exitSuccess)             -- Quits xmonad
 
     -- Run Prompt
-        -- , ("M-S-<Return>", spawn "dmenu_run -i -p \"Run: \"") -- Dmenu
-        , ("M-S-<Return>", spawn "rofi -show drun -config ~/.config/rofi/themes/dmenu.rasi -display-drun \"Run: \" -drun-display-format \"{name}\"") -- Rofi
+        , ("M-S-<Return>", spawn "dmenu_run -nb '#282C34' -nf '#C5C6D0' -sb '#282C34' -sf '#FFFFFF'") -- Dmenu
+        --, ("M-S-<Return>", spawn "rofi -show drun -config ~/.config/rofi/themes/dmenu.rasi -display-drun \"Run: \" -drun-display-format \"{name}\"") -- Rofi
 
     -- Useful programs to have a keybinding for launch
         , ("M-<Return>", spawn (myTerminal ))
@@ -301,7 +292,7 @@ main = do
         , modMask            = myModMask
         , terminal           = myTerminal
         , startupHook        = myStartupHook
-        , layoutHook         = showWName' myShowWNameTheme $ myLayoutHook
+        , layoutHook         = myLayoutHook
         , workspaces         = myWorkspaces
         , borderWidth        = myBorderWidth
         , normalBorderColor  = myNormColor
