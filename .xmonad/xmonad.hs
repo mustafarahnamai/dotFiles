@@ -86,7 +86,7 @@ myModMask :: KeyMask
 myModMask = mod4Mask       -- Sets modkey to super/windows key
 
 myTerminal :: String
-myTerminal = "alacritty -e fish "   -- Sets default terminal
+myTerminal = "alacritty"   -- Sets default terminal
 
 myBrowser :: String
 myBrowser = "firefox"               -- Sets qutebrowser as browser for tree select
@@ -117,8 +117,6 @@ myStartupHook = do
           --spawnOnce "nitrogen --restore &"
           spawnOnce "feh --bg-fill --randomize /home/rhnm/wallpapers &"
           spawnOnce "redshift &"
-          spawn $ "setxkbmap -layout gb,ir &"
-          spawn $ "setxkbmap -option 'grp:alt_shift_toggle'&"
 
 --Makes setting the spacingRaw simpler to write. The spacingRaw module adds a configurable amount of space around windows.
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
@@ -136,7 +134,7 @@ tall     = renamed [Replace "tall"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
            $ limitWindows 12
-           $ mySpacing 0
+           $ mySpacing 4
            $ ResizableTall 1 (3/100) (1/2) []
 floats   = renamed [Replace "floats"]
            $ windowNavigation
